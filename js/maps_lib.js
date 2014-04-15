@@ -21,7 +21,9 @@ var MapsLib = {
 
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "11-ZNGdnT7dLmOK-nhFfpuH4U1F4mHl-hk9TkB8T8",
+  
+  DesertTableId:      "18xIbO9F8ptOrrKHN7K_9bWyesi7DdGLPF6jfJytd",
+  fusionTableId:      "19OsySnT4O4p3jq4IGBDcE0l9GmT3ocWEareGrpIT",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
@@ -30,12 +32,12 @@ var MapsLib = {
   //name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
   //example: locationColumn:     "'my location'",
-  locationColumn:     "LOCATIONDESC1",
+  locationColumn:     "Address",
 
   map_centroid:       new google.maps.LatLng(43.0500, -87.9500), //center that your map defaults to
   locationScope:      "milwaukee",      //geographical area appended to all address searches
-  recordName:         "result",       //for showing number of results
-  recordNamePlural:   "results",
+  recordName:         "clinic",       //for showing number of results
+  recordNamePlural:   "clinics",
 
   searchRadius:       805,            //in meters ~ 1/2 mile
   defaultZoom:        11,             //zoom level when map is loaded (bigger is more zoomed in)
@@ -89,6 +91,7 @@ var MapsLib = {
 
     //-----custom filters-------
     
+    /*
     var type_column = "'VIODESCRIPTION'";
 var tempWhereClause = [];
 if ( $("#cbType1").is(':checked')) tempWhereClause.push("METER PARKING VIOLATION");
@@ -96,6 +99,7 @@ if ( $("#cbType2").is(':checked')) tempWhereClause.push("IMPROPERLY DISPLAYED VE
 if ( $("#cbType3").is(':checked')) tempWhereClause.push("Public");
 if ( $("#cbType4").is(':checked')) tempWhereClause.push("Other");
 whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
+*/
 
     //-------end of custom filters--------
 
