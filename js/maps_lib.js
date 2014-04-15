@@ -88,6 +88,14 @@ var MapsLib = {
     var whereClause = MapsLib.locationColumn + " not equal to ''";
 
     //-----custom filters-------
+    
+    var type_column = "'VIODESCRIPTION'";
+var tempWhereClause = [];
+if ( $("#cbType1").is(':checked')) tempWhereClause.push("METER PARKING VIOLATION");
+if ( $("#cbType2").is(':checked')) tempWhereClause.push("IMPROPERLY DISPLAYED VEHICLE REGISTRATION");
+if ( $("#cbType3").is(':checked')) tempWhereClause.push("Public");
+if ( $("#cbType4").is(':checked')) tempWhereClause.push("Other");
+whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
 
     //-------end of custom filters--------
 
