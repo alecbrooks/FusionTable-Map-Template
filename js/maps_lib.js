@@ -22,7 +22,7 @@ var MapsLib = {
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
   
-  DesertTableId:      "18xIbO9F8ptOrrKHN7K_9bWyesi7DdGLPF6jfJytd",
+  desertTableId:      "18xIbO9F8ptOrrKHN7K_9bWyesi7DdGLPF6jfJytd",
   fusionTableId:      "19OsySnT4O4p3jq4IGBDcE0l9GmT3ocWEareGrpIT",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
@@ -75,6 +75,35 @@ var MapsLib = {
     $("#result_box").hide();
     
     //-----custom initializers-------
+
+    MapsLib.desert = new google.maps.FusionTablesLayer({
+      query: {from:   MapsLib.desertTableId, select: "geometry"},
+	     styles: [{
+		     polygonOptions: {
+			     fillColor: "#F7EDF1",
+	    fillOpacity: 0.5
+		     }
+	     }, {
+		     where: "LILATracts_halfAnd10 > 0 ",
+	    polygonOptions: {
+		    fillColor: "#E7CAD9"
+	    }
+	     }, 
+	     {
+		     where: "LILATracts_1And10 > 0",
+	    polygonOptions: {
+		    fillColor: "#C7A4B5"
+	    }
+	     }/*,
+	     {
+		     where: "LowerIncomeTracts == 1",
+	    polygonOptions: {
+		    fillColor: "#99FFFF"
+	    }
+	     }*/]
+    });
+
+    MapsLib.desert.setMap(map);
     
     //-----end of custom initializers-------
 
