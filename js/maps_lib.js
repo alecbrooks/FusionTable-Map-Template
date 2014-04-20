@@ -24,6 +24,7 @@ var MapsLib = {
   
   desertTableId:      "18xIbO9F8ptOrrKHN7K_9bWyesi7DdGLPF6jfJytd",
   fusionTableId:      "19OsySnT4O4p3jq4IGBDcE0l9GmT3ocWEareGrpIT",
+  incomeTableId:      "1kSPs7qf-0OyNCRR4ZI5O2nsvJSJfY3lc2n9T_1b6",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
@@ -103,7 +104,36 @@ var MapsLib = {
 	     }*/]
     });
 
+    MapsLib.income = new google.maps.FusionTablesLayer({
+      query: {from:   MapsLib.incomeTableId, select: "geometry"},
+	     styles: [{
+		     polygonOptions: {
+			     //fillColor: "#fef0d9",
+	    fillOpacity: 0.3
+		     }
+	     }, {
+		     where: "MedianHouseholdIncome >= 10000 AND MedianHouseholdIncome < 20000 ",
+	    polygonOptions: {
+		    fillColor: "#fdcc8a"
+	    }
+	     }, 
+	     {
+		     where: "MedianHouseholdIncome >= 20000 AND MedianHouseholdIncome < 30000 ",
+	    polygonOptions: {
+		    fillColor: "#fc8d59"
+	    }
+	     },
+	     {
+		     where: "MedianHouseholdIncome >= 30000",
+	    polygonOptions: {
+		    fillColor: "#d7301f"
+	    }
+	     }]
+    });
+
     MapsLib.desert.setMap(map);
+    //MapsLib.income.setMap(map);
+
     
     //-----end of custom initializers-------
 
@@ -304,11 +334,39 @@ whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + 
   convertToPlainString: function(text) {
     if (text == undefined) return '';
   	return decodeURIComponent(text);
-  }
+  },
   
   //-----custom functions-------
   // NOTE: if you add custom functions, make sure to append each one with a comma, except for the last one.
   // This also applies to the convertToPlainString function above
+  toggleOverlay: function() {
+    MapsLib.desert.setMap(null);
+    MapsLib.income.setMap(null);
+    /*MapsLib.population.setMap(null);
+    MapsLib.medianIncome.setMap(null);*/
+
+    if ($("#overlayType1").is(':checked')) {
+      MapsLib.desert.setMap(map);
+      MapsLib.setDemographicsLabels("0&ndash;20%", "20&ndash;40%", "40&ndash;62%");
+    }
+    if ($("#overlayType2").is(':checked')) {
+      MapsLib.income.setMap(map);
+      MapsLib.setDemographicsLabels("0&ndash;7%", "7&ndash;14%", "14&ndash;22%");
+    }
+    /*
+    if ($("#rbCensus3").is(':checked')) {
+      MapsLib.population.setMap(map);
+      MapsLib.setDemographicsLabels("0&ndash;35k", "35k&ndash;75k", "75k&ndash;105k");
+    }
+    if ($("#rbCensus4").is(':checked')) {
+      MapsLib.medianIncome.setMap(map);
+      MapsLib.setDemographicsLabels("$10k&ndash;40k", "$40k&ndash;70k", "$70k&ndash;100k");
+    }
+    if ($("#rbCensus7").is(':checked')) {
+      MapsLib.setDemographicsLabels("&ndash;", "&ndash;", "&ndash;");
+    }*/
+
+  } 
   
   //-----end of custom functions-------
 }
