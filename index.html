@@ -156,8 +156,8 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&v=3.14"></script>
     <script type="text/javascript" src="js/jquery.geocomplete.min.js"></script>
     <script type="text/javascript" src="js/maps_lib.js"></script>
-    <!--<script type="text/javascript" src="js/jquery.js"></script>-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script type='text/javascript'>
@@ -174,8 +174,9 @@
           $("#search_address").geocomplete();
 
           $(':checkbox').click(function(){
+            //MapsLib.doSearch();
 	    MapsLib.toggleOverlay();
-            MapsLib.doSearch();
+	    //alert("!");
           });
 
           $(':radio').click(function(){
