@@ -64,22 +64,28 @@
     <h4>Overlay type </h4>
 <ul class='inputs-list unstyled'>
   <li>
-    <label class='checkbox inline'>
-      <input type='checkbox' id='overlayType1' />
+    <label class='radio inline'>
+      <input type='radio' id='overlayType1' name=overlays checked />
       <span class='filter-box filter-blue'></span>
       Access to food
     </label>
   </li>
   <li>
-    <label class='checkbox inline'>
-      <input type='checkbox' id='overlayType2' />
+    <label class='radio inline'>
+      <input type='radio' id='overlayType2' name=overlays />
       <span class='filter-box filter-red'></span>
       Income
     </label>
   </li>
   <li>
-    <label class='checkbox inline'>
-      <input type='checkbox' id='overlayType3' />
+    <label class='radio inline'>
+      <input type='radio' id='overlayType3' name=overlays />
+      No overlay
+    </label>
+  </li>
+  <li>
+    <label class='radio inline'>
+      <input type='radio' id='overlayType4' name=overlays />
       <span class='filter-box filter-green'></span>
       Red
     </label>
@@ -173,14 +179,16 @@
           MapsLib.initialize();
           $("#search_address").geocomplete();
 
+/*
           $(':checkbox').click(function(){
             //MapsLib.doSearch();
 	    MapsLib.toggleOverlay();
 	    //alert("!");
-          });
+          });*/
 
           $(':radio').click(function(){
             MapsLib.doSearch();
+	    MapsLib.toggleOverlay();
           });
           
           $('#search_radius').change(function(){

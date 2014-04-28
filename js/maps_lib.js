@@ -361,11 +361,8 @@ whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + 
       MapsLib.income.setMap(map);
       //MapsLib.setDemographicsLabels("0&ndash;7%", "7&ndash;14%", "14&ndash;22%");
     }
+    if ($("#rbCensus3").is(':checked')) { }
     /*
-    if ($("#rbCensus3").is(':checked')) {
-      MapsLib.population.setMap(map);
-      //MapsLib.setDemographicsLabels("0&ndash;35k", "35k&ndash;75k", "75k&ndash;105k");
-    }
     if ($("#rbCensus4").is(':checked')) {
       MapsLib.medianIncome.setMap(map);
       //MapsLib.setDemographicsLabels("$10k&ndash;40k", "$40k&ndash;70k", "$70k&ndash;100k");
