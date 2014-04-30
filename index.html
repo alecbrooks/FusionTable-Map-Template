@@ -39,7 +39,7 @@
     <div class='container'>
       <div class='row'>
         <div class='col-md-4'>
-          <p>This is a mock-up/work-in-progress of the map.</p>
+          <p>Certain demographics are more at risk for diabetes. View which parts of the city are at most risk. Clinics mentioned in the story are marked as red dots.</p>
           <div class='well'>
             <h4>
               Address <small>(<a id='find_me' href='#'>find me</a>)</small>
@@ -61,7 +61,7 @@
             
                 <!---START-->
   
-    <h4>Overlay type </h4>
+    <h4>Demographic</h4>
 <ul class='inputs-list unstyled'>
   <li>
     <label class='radio inline'>
@@ -90,43 +90,6 @@
     </label>
   </li>
 </ul>
-    <!---END-->
-<!--
-            <br />
-                    <h4>
-    Date
-    <small>
-    <span id="startDate"></span>
-    - 
-    <span id="endDate"></span>
-    </small>
-</h4>
-<div id="date-range"></div>
-<p class='pull-left' id='minDate'></p>
-<p class='pull-right' id='maxDate'></p>
--->
-
-
-    </ br>
-            <h4>Custom filters and views</h4>
-            <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
-            <div class='row'>
-              <div class='col-md-6'>
-                <ul>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-checkboxes'>Checkboxes</a></li>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-radiobuttons'>Radio buttons</a></li>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-drop-down-lists'>Drop down lists</a></li>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-textsearches'>Text searches</a></li>
-                </ul>
-              </div>
-              <div class='col-md-6'>
-                <ul>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-sliders'>Sliders</a></li>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-date-sliders'>Date sliders</a></li>
-                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/List-search-results'>Results lists</a></li>
-                </ul>
-              </div>
-            </div>
             <br />
             <a class='btn btn-primary' id='search' href='#'>
               <i class='glyphicon glyphicon-search'></i>
@@ -183,7 +146,8 @@
             //MapsLib.doSearch();
 	    MapsLib.toggleOverlay();
 	    //alert("!");
-          });*/
+          });
+*/
 
           $(':radio').click(function(){
             MapsLib.doSearch();

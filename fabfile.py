@@ -2,7 +2,7 @@ import fabric.api as fabric
 
 DROPBOX = "~/Dropbox/Public/Map/"
 
-MSCS = "abrooks@morbius.mscs.mu.edu:./public_html/map/"
+MSCS = "abrooks@gallifrey.mscs.mu.edu:./public_html/map/"
 
 def pushDropbox():
     """For showing others the prototype, copy to Dropbox."""
