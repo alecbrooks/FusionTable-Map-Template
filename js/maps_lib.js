@@ -25,6 +25,7 @@ var MapsLib = {
   desertTableId:      "18xIbO9F8ptOrrKHN7K_9bWyesi7DdGLPF6jfJytd",
   fusionTableId:      "19OsySnT4O4p3jq4IGBDcE0l9GmT3ocWEareGrpIT",
   incomeTableId:      "1vLRGAVSgrarGtN7NB_IqJ_wBkgmRAzAOYakx5rcF",
+  raceTableId:        "1GiCIYpJe8Pd8PI8q4YQhreHoudVrR8gyTBJmOj9T",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
@@ -107,7 +108,8 @@ var MapsLib = {
     MapsLib.income = new google.maps.FusionTablesLayer({
       query: {
         from:   MapsLib.incomeTableId,
-      select: "geometry"},
+      select: "geometry",
+        where: "col4 \x3d 79" },
 
       options: {
         styleId: 2,
@@ -139,8 +141,37 @@ var MapsLib = {
 
     });
 
+   MapsLib.race = new google.maps.FusionTablesLayer({
+      query: {
+        from:   MapsLib.raceTableId,
+      select: "geometry",
+        where: "col4 \x3d 79"  },
+	     styles: [{
+		     polygonOptions: {
+			     /*fillColor: "#fef0d9",*/
+	    fillOpacity: 0.3
+		     }
+	     }, {
+		     where: "FractionWhite > 0.5",
+	    polygonOptions: {
+		    fillColor: "#7fc97f"
+	    }
+	     },
+	     {
+		     where: "FractionBlack > 0.5",
+	    polygonOptions: {
+		    fillColor: "#beaed4"
+	    }
+	     },
+	     {
+		     where: "FractionHispanic > 0.5",
+	    polygonOptions: {
+		    fillColor: "#fdc086"
+	     }}]
+
+    });
+
     MapsLib.desert.setMap(map);
-    //MapsLib.income.setMap(map);
 
 
     //-----end of custom initializers-------
@@ -350,6 +381,7 @@ whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + 
   toggleOverlay: function() {
     MapsLib.desert.setMap(null);
     MapsLib.income.setMap(null);
+    MapsLib.race.setMap(null);
     /*MapsLib.population.setMap(null);
     MapsLib.medianIncome.setMap(null);*/
 
@@ -362,6 +394,11 @@ whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + 
       //MapsLib.setDemographicsLabels("0&ndash;7%", "7&ndash;14%", "14&ndash;22%");
     }
     if ($("#rbCensus3").is(':checked')) { }
+
+    if ($("#overlayType4").is(':checked')) {
+      MapsLib.race.setMap(map);
+      //MapsLib.setDemographicsLabels("0&ndash;7%", "7&ndash;14%", "14&ndash;22%");
+    }
     /*
     if ($("#rbCensus4").is(':checked')) {
       MapsLib.medianIncome.setMap(map);
